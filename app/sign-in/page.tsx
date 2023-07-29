@@ -1,27 +1,31 @@
-'use client'
-
-import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react'
+import styles from './page.module.sass'
+import { PrimaryButton as SubmitButton } from '@components/Button'
+import { LoginForm, TextInput, PasswordInput } from '@components/Form'
+import Link from 'next/link'
 
 const SignIn = () => {
-	const router = useRouter()
-
-	const handleOnSubmit = (e: FormEvent) => {
-		e.preventDefault()
-		console.log(new FormData(e.target as HTMLFormElement))
-		router.push('/')
-	}
-
 	return (
-		<form onSubmit={handleOnSubmit}>
-			<label>Email</label>
-			<input name="email" type="email" />
-
-			<label>Password</label>
-			<input name="password" type="password" />
-
-			<button type="submit">Sign in</button>
-		</form>
+		<main className={styles.container}>
+			{/* left side content */}
+			<section className={styles.appIntro}>
+				<h1>Bolchal</h1>
+				<h5>Mitratako aadhar</h5>
+				<p>nepali social media platform</p>
+			</section>
+			{/* right side content */}
+			<LoginForm>
+				<TextInput name="email" type="email" placeholder="Email" />
+				<PasswordInput name="password" placeholder="Password" />
+				<SubmitButton type="submit">Sign in</SubmitButton>
+				<p>
+					<Link href={'./forgot-password'}>Forgot Password?</Link>
+				</p>
+				<p>
+					Don&apos;t have an account ?
+					<Link href={'./sign-up'}>Sign up</Link>
+				</p>
+			</LoginForm>
+		</main>
 	)
 }
 

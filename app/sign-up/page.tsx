@@ -1,31 +1,29 @@
-'use client'
+import styles from './page.module.sass'
+import { PrimaryButton as SubmitButton } from '@components/Button'
+import { RegisterForm, TextInput, PasswordInput } from '@components/Form'
+import Link from 'next/link'
 
-import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react'
-
-const SignUp = () => {
-	const router = useRouter()
-
-	const handleSubmit = (e: FormEvent) => {
-		e.preventDefault()
-		console.log(new FormData(e.target as HTMLFormElement))
-		router.push('/')
-	}
-
+const SignIn = () => {
 	return (
-		<form onSubmit={handleSubmit}>
-			<label>Full Name</label>
-			<input name="name" type="text" />
-
-			<label>Email</label>
-			<input name="email" type="email" />
-
-			<label>Password</label>
-			<input name="password" type="password" />
-
-			<button type="submit">Sign up</button>
-		</form>
+		<main className={styles.container}>
+			<section className={styles.appIntro}>
+				<h1>Bolchal</h1>
+				<h5>Mitratako aadhar</h5>
+				<p>nepali social media platform</p>
+			</section>
+			<RegisterForm>
+				<TextInput name="fname" type="text" placeholder="First name" />
+				<TextInput name="lname" type="text" placeholder="Last name" />
+				<TextInput name="email" type="email" placeholder="Email" />
+				<PasswordInput name="password" placeholder="Password" />
+				<SubmitButton type="submit">Sign up</SubmitButton>
+				<p>
+					Already have an account ?
+					<Link href={'./sign-in'}>Sign in</Link>
+				</p>
+			</RegisterForm>
+		</main>
 	)
 }
 
-export default SignUp
+export default SignIn

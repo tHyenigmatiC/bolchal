@@ -1,0 +1,35 @@
+@use '../../../styles/variables.module' as v
+
+.container
+    height: 100%
+    margin: auto
+    padding: 16px
+    flex: 1
+    background-color: v.$background-color
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 48px
+
+    p
+        font-weight: 500
+        color: v.$secondary-text-color
+        font-size: 18px
+
+.login
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 16px
+    button
+        margin: 16px 0
+    p
+        font-size: 14px
+        color: v.$secondary-text-color
+    a
+        margin: 0 4px
+        text-decoration: underline
+        color: v.$complimentary-color

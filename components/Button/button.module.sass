@@ -1,0 +1,26 @@
+@use '../../styles/variables.module' as v
+
+.button
+    color: v.$text-color
+    padding: 16px
+    border-radius: v.$border-radius
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px
+    cursor: pointer
+
+.buttonPrimary
+    @extend .button
+    background-color: v.$primary-color
+    color: v.$background-color
+    border: none
+    width: 70%
+    font-size: 16px
+    &:hover
+        background-color: rgba(v.$primary-color, 0.9)
+
+.buttonSecondary
+    @extend .button
+    background-color: v.$secondary-color
+    color: v.$background-color
+    border: none
+    &:hover
+        background-color: rgba(v.$secondary-color, 0.9)
