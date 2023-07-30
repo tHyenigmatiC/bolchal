@@ -3,7 +3,8 @@ import styles from './page.module.css'
 export default function Home() {
 	return (
 		<main className={styles.main}>
-			<p>Chat History</p>
+			<section>Users</section>
+			<section>Chats</section>
 		</main>
 	)
 }
