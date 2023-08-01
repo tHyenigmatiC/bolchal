@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export * from './auth'
 export * from './data'
+export * from './live'
 
 export type BaseKey = string | number
 
@@ -9,5 +11,5 @@ export type BaseRecord = {
 }
 
 export type MetaQuery = {
-	[key: string]: unknown
+	[key: string]: any
 }

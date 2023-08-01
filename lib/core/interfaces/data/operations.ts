@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Pagination {
 	current?: number
 	pageSize?: number
@@ -37,13 +38,13 @@ export type SortOrder = 'desc' | 'asc' | null
 export type LogicalFilter = {
 	field: string
 	operator: Exclude<CrudOperators, 'or' | 'and'>
-	value: unknown
+	value: any
 }
 
 export type ConditionalFilter = {
 	key?: string
 	operator: Extract<CrudOperators, 'or' | 'and'>
-	value: unknown
+	value: any
 }
 
 export type CrudFilter = LogicalFilter | ConditionalFilter

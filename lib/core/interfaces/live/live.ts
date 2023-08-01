@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
 	BaseKey,
 	CrudFilters,
@@ -21,11 +22,11 @@ export type ILiveContext =
 					filters?: CrudFilters
 					subscriptionType?: 'useList' | 'useOne' | 'useMany'
 					resource?: string
-					[key: string]: unknown
+					[key: string]: any
 				}
 				types: LiveEvent['type'][]
 				callback: (event: LiveEvent) => void
-			}) => unknown
-			unsubscribe: (subscription: unknown) => void
+			}) => any
+			unsubscribe: (subscription: any) => void
 	  }
 	| undefined
