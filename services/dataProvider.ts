@@ -6,7 +6,7 @@ import { getAppwriteFilters } from '@utils/getAppwriteFilters'
 import { getAppwritePagination } from '@utils/getAppwritePagination'
 import { getAppwriteSorting } from '@utils/getAppwriteSorting'
 
-export const AppDataProvider = (
+export const dataProvider = (
 	database: Databases,
 	options: { databaseId: string } = { databaseId: 'default' }
 ): Required<IDataContext> => {

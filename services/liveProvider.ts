@@ -2,7 +2,7 @@ import { ILiveContext } from '@lib/core/interfaces/live'
 import { Client as Appwrite } from 'appwrite'
 import { getAppEvent } from './getAppEvent'
 
-export const AppLiveProvider = (
+export const liveProvider = (
 	appwriteClient: Appwrite,
 	options: { databaseId: string } = { databaseId: 'default' }
 ): ILiveContext => {
@@ -15,7 +15,7 @@ export const AppLiveProvider = (
 
 			if (params?.ids) {
 				appwriteChannel = params.ids.map(
-					(id) =>
+					(id: string) =>
 						`databases.${databaseId}.collections.${resource}.document.${id}`
 				)
 			} else {

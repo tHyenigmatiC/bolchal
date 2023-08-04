@@ -8,25 +8,37 @@ import {
 } from '@lib/core/interfaces'
 import { LiveEvent } from './LiveEvent'
 
-export type ILiveContext =
-	| {
-			publish?: (event: LiveEvent) => void
-			subscribe: (options: {
-				channel: string
-				params?: {
-					ids?: BaseKey[]
-					id?: BaseKey
-					meta?: MetaQuery
-					pagination?: Pagination
-					sort?: CrudSorting
-					filters?: CrudFilters
-					subscriptionType?: 'useList' | 'useOne' | 'useMany'
-					resource?: string
-					[key: string]: any
-				}
-				types: LiveEvent['type'][]
-				callback: (event: LiveEvent) => void
-			}) => any
-			unsubscribe: (subscription: any) => void
-	  }
-	| undefined
+export type LiveListParams = {
+	resource?: string
+	pagination?: Pagination
+	sort?: CrudSorting
+	filters?: CrudFilters
+	meta?: MetaQuery
+}
+
+export type LiveOneParams = {
+	resource?: string
+	id?: BaseKey
+}
+
+export type LiveManyParams = {
+	resource?: string
+	ids?: BaseKey[]
+}
+
+export type LiveCommonParams = {
+	subscriptionType?: 'useList' | 'useOne' | 'useMany'
+	[key: string]: any
+}
+
+export type ILiveContext = {
+	publish?: (event: LiveEvent) => void
+	subscribe: (options: {
+		channel: string
+		params?: LiveCommonParams &
+			(LiveOneParams | LiveManyParams | LiveListParams)
+		types: LiveEvent['type'][]
+		callback: (event: LiveEvent) => void
+	}) => any
+	unsubscribe: (subscription: any) => void
+}

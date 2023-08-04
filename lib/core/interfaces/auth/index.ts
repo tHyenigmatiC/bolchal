@@ -11,7 +11,7 @@ export interface IAuthContext {
 	forgotPassword?: (params: unknown) => Promise<AuthActionResponse>
 	updatePassword?: (params: unknown) => Promise<AuthActionResponse>
 	logout: (params: unknown) => Promise<AuthActionResponse>
-	check: (params: unknown) => Promise<CheckAuthResponse>
+	checkAuth: (params?: unknown) => Promise<CheckAuthResponse>
 	onError?: (params: unknown) => Promise<OnErrorResponse>
 	getIdentity?: (params: unknown) => Promise<IdentityResponse>
 }

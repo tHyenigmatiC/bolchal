@@ -48,7 +48,7 @@ export const CoreAuthProvider: React.FC<PropsWithChildren<IAuthContext>> = ({
 
 	const handleAuthCheck = async (params: unknown) => {
 		try {
-			const result = await authProvider.check(params)
+			const result = await authProvider.checkAuth(params)
 			return result
 		} catch (error) {
 			console.warn(
@@ -91,7 +91,7 @@ export const CoreAuthProvider: React.FC<PropsWithChildren<IAuthContext>> = ({
 				...authProvider,
 				signin: handleSignIn as IAuthContext['signin'],
 				signup: handleSignUp as IAuthContext['signup'],
-				check: handleAuthCheck as IAuthContext['check'],
+				checkAuth: handleAuthCheck as IAuthContext['checkAuth'],
 				forgotPassword:
 					handleForgotPassword as IAuthContext['forgotPassword'],
 				updatePassword:
