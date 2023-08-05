@@ -1,10 +1,13 @@
-import { ILiveContext } from '@lib/core/interfaces/live'
+'use client'
+
 import { Client as Appwrite } from 'appwrite'
+
+import { ILiveContext } from '@lib/core/interfaces/live'
 import { getAppEvent } from './getAppEvent'
 
 export const liveProvider = (
 	appwriteClient: Appwrite,
-	options: { databaseId: string } = { databaseId: 'default' }
+	options: { databaseId: string } = { databaseId: 'chat' }
 ): ILiveContext => {
 	const { databaseId } = options
 	return {

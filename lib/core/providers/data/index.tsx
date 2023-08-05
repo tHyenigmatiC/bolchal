@@ -1,4 +1,7 @@
+'use client'
+
 import React, { PropsWithChildren } from 'react'
+
 import { IDataContext } from '@lib/core/interfaces/data'
 import { DataContext } from '@lib/core/context'
 

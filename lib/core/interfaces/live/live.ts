@@ -31,14 +31,16 @@ export type LiveCommonParams = {
 	[key: string]: any
 }
 
+export type SubscribeOptions = {
+	channel: string
+	params?: LiveCommonParams &
+		(LiveOneParams | LiveManyParams | LiveListParams)
+	types: LiveEvent['type'][]
+	callback: (event: LiveEvent) => void
+}
+
 export type ILiveContext = {
 	publish?: (event: LiveEvent) => void
-	subscribe: (options: {
-		channel: string
-		params?: LiveCommonParams &
-			(LiveOneParams | LiveManyParams | LiveListParams)
-		types: LiveEvent['type'][]
-		callback: (event: LiveEvent) => void
-	}) => any
+	subscribe: (options: SubscribeOptions) => any
 	unsubscribe: (subscription: any) => void
 }

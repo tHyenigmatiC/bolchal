@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+'use client'
+
+import { Databases, ID, Permission, Role } from 'appwrite'
 
 import { IDataContext } from '@lib/core/interfaces'
-import { Databases, ID, Permission, Role } from 'appwrite'
 import { getAppwriteFilters } from '@utils/getAppwriteFilters'
 import { getAppwritePagination } from '@utils/getAppwritePagination'
 import { getAppwriteSorting } from '@utils/getAppwriteSorting'
 
 export const dataProvider = (
 	database: Databases,
-	options: { databaseId: string } = { databaseId: 'default' }
+	options: { databaseId: string } = { databaseId: 'chat' }
 ): Required<IDataContext> => {
 	const { databaseId } = options
 	return {
@@ -44,7 +46,7 @@ export const dataProvider = (
 			const {
 				current = 1,
 				pageSize = 10,
-				mode = 'server',
+				mode = 'client',
 			} = pagination ?? {}
 
 			const appwriteFilters = getAppwriteFilters(filters)
@@ -78,6 +80,8 @@ export const dataProvider = (
 				...(meta?.readPermissions ?? ''),
 				...(meta?.writePermissions ?? ''),
 			]
+
+			console.log({ resource, variables, meta })
 
 			const { $id, ...restData } = await database.createDocument(
 				databaseId,

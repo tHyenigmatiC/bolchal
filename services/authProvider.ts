@@ -1,5 +1,8 @@
-import { HttpError, IAuthContext } from '@lib/core'
+'use client'
+
 import { Account, ID } from 'appwrite'
+
+import { HttpError, IAuthContext } from '@lib/core'
 
 export type LoginProps = {
 	email: string
@@ -12,12 +15,30 @@ export type RegisterProps = {
 
 export const authProvider = (account: Account): IAuthContext => {
 	return {
-		signin: async (params) => {
-			const { email, password } = params as LoginProps
-			try {
-				const data = await account.createEmailSession(email, password)
+		// TODO use auth login
+		// signin: async (params) => {
+		// 	const { email, password } = params as LoginProps
+		// 	try {
+		// 		const data = await account.createEmailSession(email, password)
 
-				console.log(data)
+		// 		console.log(data)
+		// 		return {
+		// 			success: true,
+		// 			redirectTo: '/',
+		// 		}
+		// 	} catch (error) {
+		// 		return {
+		// 			success: false,
+		// 			error: error as HttpError,
+		// 		}
+		// 	}
+		// },
+		signin: async (params) => {
+			const { email } = params as LoginProps
+			try {
+				await account.createAnonymousSession()
+				await account.updateName(email.split('@')[0])
+
 				return {
 					success: true,
 					redirectTo: '/',
@@ -93,15 +114,13 @@ export const authProvider = (account: Account): IAuthContext => {
 		},
 		getIdentity: async () => {
 			try {
-				const data = await account.get()
-				const { email, name, phone, status } = data
+				const user = await account.get()
 
-				return {
-					email,
-					name,
-					phone,
-					status,
+				if (user) {
+					return user
 				}
+
+				return null
 			} catch (error) {
 				return null
 			}

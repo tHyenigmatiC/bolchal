@@ -1,10 +1,12 @@
-import styles from './page.module.css'
+import Link from 'next/link'
+import styles from './page.module.sass'
 
 export default function Home() {
 	return (
 		<main className={styles.main}>
-			<section>Users</section>
-			<section>Chats</section>
+			<Link href={'/messages'} className={styles.link}>
+				Messages
+			</Link>
 		</main>
 	)
 }

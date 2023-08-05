@@ -1,4 +1,7 @@
+'use client'
+
 import { PropsWithChildren } from 'react'
+
 import { AuthContext } from '@lib/core/context'
 import { IAuthContext } from '@lib/core/interfaces'
 
