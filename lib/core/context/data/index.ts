@@ -1,3 +1,5 @@
+'use client'
+
 import { IDataContext } from '@lib/core/interfaces/data'
 import { defaultDataProvider } from '@lib/core/providers/data/default'
 import React from 'react'

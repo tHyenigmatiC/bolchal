@@ -1,12 +1,15 @@
+'use client'
+
 import { ILiveContext } from '@lib/core/interfaces/live'
 import { Client as Appwrite } from 'appwrite'
 import { getAppEvent } from './getAppEvent'
 
 export const liveProvider = (
 	appwriteClient: Appwrite,
-	options: { databaseId: string } = { databaseId: 'default' }
+	options: { databaseId: string } = { databaseId: 'chat' }
 ): ILiveContext => {
 	const { databaseId } = options
+
 	return {
 		subscribe: ({ channel, types, params, callback }) => {
 			const resource = channel.replace('resources/', '')
@@ -24,7 +27,6 @@ export const liveProvider = (
 
 			return appwriteClient.subscribe(appwriteChannel, (event) => {
 				const appEvent = getAppEvent(event.events[0])
-
 				if (
 					types.includes('*') ||
 					(appEvent && types.includes(appEvent))
@@ -39,6 +41,9 @@ export const liveProvider = (
 				}
 			})
 		},
-		unsubscribe: async (unsubscribe: () => void) => [unsubscribe()],
+		unsubscribe: async (subscription: () => void) => {
+			// closes the subscription
+			subscription()
+		},
 	}
 }

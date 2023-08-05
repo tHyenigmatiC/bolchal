@@ -6,7 +6,7 @@ export const defaultLiveProvider = () => {
 			console.log(event)
 		},
 		subscribe: (options: {
-			channel: 'chat'
+			channel: 'messages'
 			params: {
 				subscriptionType: 'useOne'
 				resource: 'database'

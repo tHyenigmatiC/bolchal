@@ -1,0 +1,48 @@
+@use '../styles/variables.module' as v
+
+.main
+  min-height: 100vh
+  width: 100%
+
+.container
+  margin: auto
+  width: fit-content
+  display: flex
+  height: 70svh
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  gap: 8px
+  padding: 8px
+
+.chats
+  height: 80%
+  width: 100%
+  overflow-y: scroll
+  margin-bottom: 8px
+  font-size: 14px
+
+.chat
+  padding: 8px 16px
+  background-color: v.$background-color
+  color: v.$text-color
+
+.user
+  color: v.$primary-color
+  margin-right: 8px
+
+.add-message
+  display: flex
+  width: 100%
+  align-items: center
+  justify-content: center
+  gap: 8px
+
+.chat-input
+  padding: 8px
+  flex: 1
+
+.button
+  padding: 8px
+  background-color: v.$primary-color
+  border: 1px solid v.$primary-color

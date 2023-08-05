@@ -14,7 +14,8 @@ import styles from './login.module.sass'
 import { InputProps } from '../types'
 import { Wrapper } from '../Input/Wrapper'
 import { loginValidationSchema } from '@schema/auth'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
+import { useLogin } from '@demo'
 
 export const LoginForm = ({ children }: { children: React.ReactNode }) => {
 	const {
@@ -23,11 +24,15 @@ export const LoginForm = ({ children }: { children: React.ReactNode }) => {
 		formState: { errors },
 	} = useForm({ resolver: zodResolver(loginValidationSchema) })
 
-	const router = useRouter()
+	// const router = useRouter()
 
-	const handleLogin: SubmitHandler<FieldValues> = (data) => {
+	const { login } = useLogin()
+
+	const handleLogin: SubmitHandler<FieldValues> = async (data) => {
 		console.log(data)
-		router.push('/')
+		const { email } = data
+		await login({ name: email })
+		// router.push('/')
 	}
 
 	const childrenWithLoginBindings = React.Children.map(children, (child) => {

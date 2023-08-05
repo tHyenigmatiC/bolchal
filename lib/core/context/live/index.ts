@@ -1,3 +1,5 @@
+'use client'
+
 import { ILiveContext } from '@lib/core/interfaces'
 import { defaultLiveProvider } from '@lib/core/providers/live/default'
 import React from 'react'
