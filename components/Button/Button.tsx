@@ -1,10 +1,15 @@
+'use client'
+
+import { MouseEventHandler } from 'react'
 import styles from './button.module.sass'
 
-interface Props {
-	[key: string]: string
+type Props = {
+	onClick?: MouseEventHandler<HTMLButtonElement>
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	[key: string]: any
 }
 
-type ButtonProps = Props & {
+export type ButtonProps = Props & {
 	children: React.ReactNode
 }
 

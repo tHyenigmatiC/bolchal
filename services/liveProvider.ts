@@ -7,7 +7,9 @@ import { getAppEvent } from './getAppEvent'
 
 export const liveProvider = (
 	appwriteClient: Appwrite,
-	options: { databaseId: string } = { databaseId: 'chat' }
+	options: { databaseId: string } = {
+		databaseId: process.env.NEXT_PUBLIC_CHAT_DATABASE_ID as string,
+	}
 ): ILiveContext => {
 	const { databaseId } = options
 	return {

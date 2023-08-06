@@ -1,6 +1,12 @@
 'use client'
 
-import { ChangeEventHandler, useEffect, useRef, useState } from 'react'
+import {
+	ChangeEventHandler,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from 'react'
 import styles from './page.module.sass'
 import { Models } from 'appwrite'
 import { useChatMessages } from '../../hooks/useChatMessages'
@@ -11,11 +17,13 @@ export type ChatMessage = Models.Document & {
 }
 
 const Messages = () => {
-	const { messages, sendMessage } = useChatMessages()
+	const { messages, sendMessage, updateMessages } = useChatMessages()
 
 	const [message, setMessage] = useState('')
 
 	const chatsRef = useRef<HTMLUListElement>(null)
+	const showLatest = useRef<boolean>(true)
+	const scrolledDivPosition = useRef<Element>()
 
 	const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
 		setMessage(e.target.value)
@@ -24,11 +32,38 @@ const Messages = () => {
 	const submit = () => {
 		sendMessage({ message })
 		setMessage('')
+		showLatest.current = true
 	}
 
+	const handleScroll = useCallback(() => {
+		const position = chatsRef.current?.scrollTop as number
+		if (position < 100) {
+			scrolledDivPosition.current = chatsRef.current
+				?.firstElementChild as Element
+			showLatest.current = false
+			updateMessages()
+		}
+	}, [updateMessages])
+
 	useEffect(() => {
-		chatsRef.current?.lastElementChild?.scrollIntoView()
+		if (showLatest.current) {
+			chatsRef.current?.lastElementChild?.scrollIntoView()
+		}
+
+		if (scrolledDivPosition.current) {
+			alert('here')
+			scrolledDivPosition.current.scrollIntoView()
+		}
 	}, [messages])
+
+	useEffect(() => {
+		const container = chatsRef.current
+		container?.addEventListener('scroll', handleScroll, { passive: true })
+
+		return () => {
+			container?.removeEventListener('scroll', handleScroll)
+		}
+	}, [handleScroll])
 
 	return (
 		<main className={styles.main}>

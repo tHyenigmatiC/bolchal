@@ -1,7 +1,8 @@
+import { Pagination } from '@lib/core'
 import { useGetIdentity, useGetList, useRealtime } from '@lib/core/hooks'
 import { useCreateOne } from '@lib/core/hooks/data/useCreateOne'
 import { Models } from 'appwrite'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export type ChatMessage = Models.Document & {
 	name: string
@@ -9,12 +10,17 @@ export type ChatMessage = Models.Document & {
 }
 
 export const useChatMessages = () => {
-	const { loadData } = useGetList({
-		resource: process.env.NEXT_PUBLIC_CHAT_COLLECTION_ID as string,
+	const [pagination, setPagination] = useState<Pagination>({
+		current: 1,
+		mode: 'server',
+		pageSize: 15,
 	})
+
+	const { loadData } = useGetList()
 	const [messages, setMessages] = useState<ChatMessage[]>([])
 	const { user } = useGetIdentity()
 	const { create } = useCreateOne()
+	const cursor = useRef<string>()
 
 	const { listenToRealtimeUpdates, stopRealTimeUpdates } = useRealtime({
 		channel: process.env.NEXT_PUBLIC_CHAT_COLLECTION_ID as string,
@@ -27,16 +33,45 @@ export const useChatMessages = () => {
 		},
 	})
 
+	const updateMessages = () => {
+		setPagination({
+			cursor: cursor.current as string,
+			direction: 'after',
+			pageSize: 15,
+			mode: 'server',
+		})
+	}
+
 	useEffect(() => {
-		loadData().then(
+		loadData({
+			resource: process.env.NEXT_PUBLIC_CHAT_COLLECTION_ID as string,
+			pagination,
+			sort: [
+				{
+					field: '$createdAt',
+					order: 'desc',
+				},
+			],
+		}).then(
 			(response) => {
-				setMessages(response?.data as unknown as ChatMessage[])
+				const chatMessages = response?.data as unknown as ChatMessage[]
+				cursor.current = chatMessages[chatMessages.length - 1].id
+				setMessages((oldMessages) => [
+					...chatMessages.sort((a, b) => {
+						return (
+							new Date(a.$updatedAt).getTime() -
+							new Date(b.$updatedAt).getTime()
+						)
+					}),
+					...oldMessages,
+				])
 			},
-			() => {
+			(error) => {
+				console.log(error)
 				setMessages([])
 			}
 		)
-	}, [])
+	}, [pagination])
 
 	useEffect(() => {
 		listenToRealtimeUpdates()
@@ -47,7 +82,7 @@ export const useChatMessages = () => {
 
 	const sendMessage = async ({ message }: { message: string }) => {
 		await create({
-			resource: 'messages',
+			resource: process.env.NEXT_PUBLIC_CHAT_COLLECTION_ID as string,
 			variables: {
 				message,
 				user: user?.name ?? 'Kapil',
@@ -58,5 +93,6 @@ export const useChatMessages = () => {
 	return {
 		messages,
 		sendMessage,
+		updateMessages,
 	}
 }

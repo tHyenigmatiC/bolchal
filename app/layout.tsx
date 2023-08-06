@@ -5,6 +5,8 @@ import { BolchalApp } from '@components/App/App'
 
 const inter = Inter({ subsets: ['latin'] })
 
+import './globals.css'
+
 export const metadata: Metadata = {
 	title: 'Bolchal',
 	description: 'Nepali Social Media Platform',

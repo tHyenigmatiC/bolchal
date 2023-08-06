@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import styles from './page.module.sass'
+import { LogoutButton } from '@components/Button'
 
 export default function Home() {
 	return (
@@ -7,6 +8,7 @@ export default function Home() {
 			<Link href={'/messages'} className={styles.link}>
 				Messages
 			</Link>
+			<LogoutButton>Logout</LogoutButton>
 		</main>
 	)
 }

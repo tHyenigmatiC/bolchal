@@ -10,7 +10,9 @@ import { getAppwriteSorting } from '@utils/getAppwriteSorting'
 
 export const dataProvider = (
 	database: Databases,
-	options: { databaseId: string } = { databaseId: 'chat' }
+	options: { databaseId: string } = {
+		databaseId: process.env.NEXT_PUBLIC_CHAT_DATABASE_ID as string,
+	}
 ): Required<IDataContext> => {
 	const { databaseId } = options
 	return {
@@ -43,17 +45,11 @@ export const dataProvider = (
 			} as any
 		},
 		getList: async ({ resource, pagination, sort, filters }) => {
-			const {
-				current = 1,
-				pageSize = 10,
-				mode = 'client',
-			} = pagination ?? {}
-
 			const appwriteFilters = getAppwriteFilters(filters)
 
 			const appwritePagination =
-				mode === 'server'
-					? getAppwritePagination(current, pageSize)
+				pagination?.mode === 'server'
+					? getAppwritePagination(pagination)
 					: []
 
 			const appwriteSorts = getAppwriteSorting(sort)
@@ -61,8 +57,8 @@ export const dataProvider = (
 			const { total: total, documents: data } =
 				await database.listDocuments(databaseId, resource, [
 					...appwriteFilters,
-					...appwritePagination,
 					...appwriteSorts,
+					...appwritePagination,
 				])
 
 			return {

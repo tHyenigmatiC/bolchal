@@ -14,7 +14,7 @@ export const RealtimeWrapper = ({
 	return (
 		<Realtime
 			liveProvider={liveProvider(appwriteClient, {
-				databaseId: 'chat',
+				databaseId: process.env.NEXT_PUBLIC_CHAT_DATABASE_ID as string,
 			})}
 		>
 			{children}

@@ -1,9 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface Pagination {
+export interface StaticPagination {
 	current?: number
 	pageSize?: number
 	mode?: 'client' | 'server' | 'off'
 }
+
+export interface CursorPagination {
+	cursor: string
+	pageSize?: number
+	direction: 'after' | 'before'
+	mode?: 'client' | 'server' | 'off'
+}
+
+export type Pagination = StaticPagination | CursorPagination
 
 export type CrudOperators =
 	| 'eq'
