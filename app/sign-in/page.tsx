@@ -1,6 +1,6 @@
 import styles from './page.module.sass'
 import { PrimaryButton as SubmitButton } from '@components/Button'
-import { LoginForm, TextInput, PasswordInput } from '@components/Form'
+import { LoginForm, TextInput, PasswordInput } from '@lib/core/components'
 import Link from 'next/link'
 
 const SignIn = () => {

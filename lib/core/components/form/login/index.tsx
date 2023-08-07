@@ -12,7 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import styles from './login.module.sass'
 import { InputProps } from '../types'
-import { Wrapper } from '../Input/Wrapper'
+import { Wrapper } from '../input/Wrapper'
 import { loginValidationSchema } from '@schema/auth'
 import { useSignIn } from '@lib/core/hooks'
 

@@ -10,7 +10,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import { registerValidationSchema } from '@schema/auth'
 import React from 'react'
-import { Wrapper } from '../Input/Wrapper'
+import { Wrapper } from '../input/Wrapper'
 import { InputProps } from '../types'
 import { useRouter } from 'next/navigation'
 
