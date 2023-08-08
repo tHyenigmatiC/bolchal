@@ -1,1 +1,1 @@
-export * from './Form/Input'
+export * from './global'

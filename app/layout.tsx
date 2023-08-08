@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
-import { BolchalApp } from '@components/App/App'
+import { BolchalApp } from '@components/global/App/App'
 
 const inter = Inter({ subsets: ['latin'] })
 

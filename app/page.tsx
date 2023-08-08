@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './page.module.sass'
-import { LogoutButton } from '@components/Button'
+import { LogoutButton } from '@components'
 
 export default function Home() {
 	return (
