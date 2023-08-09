@@ -4,7 +4,7 @@ export const loginValidationSchema = z.object({
 	email: z.string().email({ message: 'Invalid email' }),
 	password: z
 		.string()
-		.min(6, { message: 'Password must be at least 6 characters long' }),
+		.min(8, { message: 'Password must be at least 8 characters long' }),
 })
 
 export const registerValidationSchema = z.object({
@@ -13,5 +13,5 @@ export const registerValidationSchema = z.object({
 	email: z.string().email({ message: 'Invalid email' }),
 	password: z
 		.string()
-		.min(6, { message: 'Password must be at least 6 characters long' }),
+		.min(8, { message: 'Password must be at least 8 characters long' }),
 })

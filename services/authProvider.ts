@@ -21,6 +21,7 @@ export const authProvider = (account: Account): IAuthContext => {
 				const data = await account.createEmailSession(email, password)
 
 				console.log(data)
+				localStorage.user = data
 				return {
 					success: true,
 					redirectTo: '/',
@@ -68,7 +69,7 @@ export const authProvider = (account: Account): IAuthContext => {
 			} catch (error) {
 				return {
 					authenticated: false,
-					redirectTo: '/login',
+					redirectTo: '/sign-in',
 					logout: true,
 					error: error as HttpError,
 				}
@@ -76,7 +77,7 @@ export const authProvider = (account: Account): IAuthContext => {
 
 			return {
 				authenticated: false,
-				redirectTo: '/login',
+				redirectTo: '/sign-in',
 			}
 		},
 		logout: async () => {
@@ -85,7 +86,7 @@ export const authProvider = (account: Account): IAuthContext => {
 				console.log(data)
 				return {
 					success: true,
-					redirectTo: '/login',
+					redirectTo: '/sign-in',
 				}
 			} catch (error) {
 				return {

@@ -3,7 +3,7 @@
 import { ChangeEventHandler, useEffect, useRef, useState } from 'react'
 import styles from './page.module.sass'
 import { Models } from 'appwrite'
-import { useChatMessages } from '../../hooks/useChatMessages'
+import { useChatMessages } from '@hooks'
 
 export type ChatMessage = Models.Document & {
 	name: string

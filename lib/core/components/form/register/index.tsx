@@ -12,7 +12,7 @@ import { registerValidationSchema } from '@schema/auth'
 import React from 'react'
 import { Wrapper } from '../input/Wrapper'
 import { InputProps } from '../types'
-import { useRouter } from 'next/navigation'
+import { useSignUp } from '@lib/core/hooks/auth/useSignUp'
 
 export const RegisterForm = ({ children }: { children: React.ReactNode }) => {
 	const {
@@ -21,11 +21,14 @@ export const RegisterForm = ({ children }: { children: React.ReactNode }) => {
 		formState: { errors },
 	} = useForm({ resolver: zodResolver(registerValidationSchema) })
 
-	const router = useRouter()
+	const { handleSignUpNewUser } = useSignUp()
 
 	const handleRegister: SubmitHandler<FieldValues> = (data) => {
 		console.log(data)
-		router.push('/')
+		handleSignUpNewUser({
+			...data,
+			name: data.fname ? data.fname + data.lname : data.name,
+		})
 	}
 
 	const childrenWithRegisterBindings = React.Children.map(

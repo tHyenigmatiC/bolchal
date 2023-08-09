@@ -1,4 +1,5 @@
 export * from './useAuthContext'
-export * from './useLogin'
-export * from './useLogin'
+export * from './useSignIn'
+export * from './useSignIn'
 export * from './useGetIdentity'
+export * from './useCheckAuth'

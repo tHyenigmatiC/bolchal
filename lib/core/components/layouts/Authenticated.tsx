@@ -1,22 +1,41 @@
+'use client'
+
 import React from 'react'
 
-import { useGetIdentity, useNavigation } from '@lib/core/hooks'
+import { useCheckAuth } from '@lib/core/hooks'
 
 export interface AuthPageProps {
 	children: React.ReactNode
 	redirectTo?: string
+	fallbackContent?: React.ReactNode
+	loadingContent?: React.ReactNode
 }
 
-export const Authenticated = ({ redirectTo, children }: AuthPageProps) => {
-	const { user } = useGetIdentity()
-	const navigate = useNavigation()
+export const Authenticated = ({
+	loadingContent,
+	fallbackContent,
+	children,
+}: AuthPageProps) => {
+	const { authenticated, isLoading } = useCheckAuth()
+	const state = React.useRef<{
+		status: 'initial' | 'pending' | 'settled'
+		content: React.ReactNode
+	}>({
+		status: isLoading ? 'initial' : 'settled',
+		content: loadingContent ?? null,
+	})
 
-	if (!user) {
-		if (redirectTo) {
-			navigate({ to: redirectTo })
-		}
-		navigate({ to: '/sign-in' })
+	if (!isLoading) {
+		state.current.status = 'settled'
 	}
 
-	return <>{children}</>
+	if (state.current.status == 'settled') {
+		if (authenticated) {
+			state.current.content = children
+		} else {
+			state.current.content = fallbackContent
+		}
+	}
+
+	return <>{state.current.content}</>
 }

@@ -1,4 +1,4 @@
-import { RealtimeWrapper } from '@components/global/App/Realtime'
+import { RealtimeWrapper } from '@components'
 
 export default function RootLayout({
 	children,
