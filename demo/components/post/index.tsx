@@ -42,7 +42,7 @@ export const FeedPost = (props: PostProps) => {
 						<Image
 							src={media}
 							alt="Picture of the author"
-							layout="fill"
+							fill={true}
 							style={{
 								objectFit: 'cover',
 							}}
@@ -52,31 +52,31 @@ export const FeedPost = (props: PostProps) => {
 			</Post.Body>
 			<Post.Footer>
 				<Post.Metrics>
-					{likes}
 					<Image
 						src="/like.svg"
-						height={24}
-						width={24}
+						height={20}
+						width={20}
 						alt="Icon for likes"
 					/>
+					{likes} likes
 				</Post.Metrics>
 				<Post.Metrics>
-					{comments}
 					<Image
 						src="/comments.svg"
 						height={24}
 						width={24}
 						alt="Icon for comments"
 					/>
+					{comments} comments
 				</Post.Metrics>
 				<Post.Metrics>
-					{share}
 					<Image
 						src="/share.svg"
 						height={20}
 						width={20}
 						alt="Icon for share"
 					/>
+					{share} shares
 				</Post.Metrics>
 			</Post.Footer>
 		</Post>
