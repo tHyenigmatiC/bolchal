@@ -1,6 +1,9 @@
+import { Sidebar } from '@components'
 import { Authenticated, Navigate } from '@lib/core/components'
 
-export default function RootLayout({
+import styles from './layout.module.sass'
+
+export default function HomePageLayout({
 	children,
 }: {
 	children: React.ReactNode
@@ -9,7 +12,10 @@ export default function RootLayout({
 		<Authenticated
 			fallbackContent={<Navigate to="/sign-in" replace={true} />}
 		>
-			{children}
+			<main className={styles.layout}>
+				<Sidebar />
+				<div className={styles.content}>{children}</div>
+			</main>
 		</Authenticated>
 	)
 }
