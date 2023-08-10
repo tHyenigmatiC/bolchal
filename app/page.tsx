@@ -1,12 +1,13 @@
-import Link from 'next/link'
 import styles from './page.module.sass'
+
+import { FeedPost } from '../demo/components/post'
+import PostData from '../demo/components/post/data.json'
 
 export default function Home() {
 	return (
 		<main className={styles.main}>
-			<Link href={'/messages'} className={styles.link}>
-				Messages
-			</Link>
+			<FeedPost {...PostData[0]} />
+			<FeedPost {...PostData[0]} />
 		</main>
 	)
 }
