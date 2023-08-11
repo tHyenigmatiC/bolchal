@@ -1,0 +1,20 @@
+[
+	{
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non neque vel odio molestie dignissim eu ac quam. Fusce dignissim pellentesque magna vitae posuere. Integer accumsan et nunc sit amet auctor. Curabitur ullamcorper sed lacus non blandit. Nunc sed enim a lorem ornare aliquam ac nec lectus. Nam id euismod.",
+		"media": "https://avatars.githubusercontent.com/u/24877606?v=4",
+		"likes": 243,
+		"comments": 85,
+		"share": 45,
+		"createdAt": "2023 Aug 9",
+		"user": "Kapil Bastola"
+	},
+	{
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non neque vel odio molestie dignissim eu ac quam. Fusce dignissim pellentesque magna vitae posuere. Integer accumsan et nunc sit amet auctor. Curabitur ullamcorper sed lacus non blandit. Nunc sed enim a lorem ornare aliquam ac nec lectus. Nam id euismod.",
+		"media": "https://avatars.githubusercontent.com/u/24877606?v=4",
+		"likes": 105,
+		"comments": 23,
+		"share": 20,
+		"createdAt": "2023 Aug 10",
+		"user": "Kapil Bastola"
+	}
+]

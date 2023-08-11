@@ -2,7 +2,7 @@
 
 import styles from './sidebar.module.sass'
 import { useGetIdentity } from '@lib/core/hooks'
-import { SidebarContent } from './content'
+import { Sidebar as SidebarContent } from './sidebar'
 
 export const Sidebar = () => {
 	const { user } = useGetIdentity()

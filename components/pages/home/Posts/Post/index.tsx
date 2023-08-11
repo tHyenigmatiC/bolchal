@@ -2,24 +2,15 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { Post } from './post'
+import { Post as PostUI } from './post'
+import { PostProps } from '../types'
 
-export interface PostProps {
-	description: string
-	media: string
-	likes: number
-	comments: number
-	share: number
-	createdAt: string
-	user: string
-}
-
-export const FeedPost = (props: PostProps) => {
+export const Post = (props: PostProps) => {
 	const { description, media, likes, comments, share, createdAt, user } =
 		props
 	return (
-		<Post>
-			<Post.Header>
+		<PostUI>
+			<PostUI.Header>
 				<Image
 					src={media}
 					width={32}
@@ -34,11 +25,11 @@ export const FeedPost = (props: PostProps) => {
 					<div>{user}</div>
 					<span>{createdAt}</span>
 				</div>
-			</Post.Header>
-			<Post.Body>
-				<Post.Content>{description}</Post.Content>
+			</PostUI.Header>
+			<PostUI.Body>
+				<PostUI.Content>{description}</PostUI.Content>
 				{media ? (
-					<Post.Media>
+					<PostUI.Media>
 						<Image
 							src={media}
 							alt="Picture of the author"
@@ -47,11 +38,11 @@ export const FeedPost = (props: PostProps) => {
 								objectFit: 'cover',
 							}}
 						/>
-					</Post.Media>
+					</PostUI.Media>
 				) : null}
-			</Post.Body>
-			<Post.Footer>
-				<Post.Metrics>
+			</PostUI.Body>
+			<PostUI.Footer>
+				<PostUI.Metrics>
 					<Image
 						src="/like.svg"
 						height={20}
@@ -59,8 +50,8 @@ export const FeedPost = (props: PostProps) => {
 						alt="Icon for likes"
 					/>
 					{likes} likes
-				</Post.Metrics>
-				<Post.Metrics>
+				</PostUI.Metrics>
+				<PostUI.Metrics>
 					<Image
 						src="/comments.svg"
 						height={24}
@@ -68,8 +59,8 @@ export const FeedPost = (props: PostProps) => {
 						alt="Icon for comments"
 					/>
 					{comments} comments
-				</Post.Metrics>
-				<Post.Metrics>
+				</PostUI.Metrics>
+				<PostUI.Metrics>
 					<Image
 						src="/share.svg"
 						height={20}
@@ -77,8 +68,8 @@ export const FeedPost = (props: PostProps) => {
 						alt="Icon for share"
 					/>
 					{share} shares
-				</Post.Metrics>
-			</Post.Footer>
-		</Post>
+				</PostUI.Metrics>
+			</PostUI.Footer>
+		</PostUI>
 	)
 }
