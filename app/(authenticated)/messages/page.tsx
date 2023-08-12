@@ -37,7 +37,7 @@ const Messages = () => {
 					{messages.map((message, index) => (
 						<li className={styles.chat} key={index}>
 							<span className={styles.user}>
-								{message.user.split('@')[0]}:
+								{message.sender}:
 							</span>
 							{message.message}
 						</li>

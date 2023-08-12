@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 import React from 'react'
 import styles from './post.module.sass'
+import { Metrics } from './metrics'
 
 export interface PostProps {
 	description: string
@@ -36,6 +37,4 @@ Post.Footer = ({ children }: { children: React.ReactNode }) => {
 	return <div className={styles.footer}>{children}</div>
 }
 
-Post.Metrics = ({ children }: { children: React.ReactNode }) => {
-	return <div className={styles.metrics}>{children}</div>
-}
+Post.Metrics = Metrics

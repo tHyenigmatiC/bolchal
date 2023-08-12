@@ -7,6 +7,12 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px
     cursor: pointer
 
+    .small
+        width: 60px
+
+    .medium:
+        width: 80px
+
 .buttonPrimary
     @extend .button
     background-color: v.$primary-color
@@ -24,6 +30,14 @@
     border: none
     &:hover
         background-color: rgba(v.$secondary-color, 0.9)
+
+.buttonComplementary
+    @extend .button
+    background-color: v.$complimentary-color
+    color: v.$background-color
+    border: none
+    &:hover
+        background-color: rgba(v.$complimentary-color, 0.9)
 
 .button-logout
     padding: 16px

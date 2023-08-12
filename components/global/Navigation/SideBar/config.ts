@@ -20,7 +20,7 @@ export const SidebarConfig: SidebarProps = {
 			icon: '/message.svg',
 		},
 		{
-			href: '/',
+			href: '/#',
 			text: 'Settings',
 			icon: '/settings.svg',
 		},

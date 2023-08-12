@@ -1,0 +1,39 @@
+@use '@styles/variables.module.sass' as v
+
+.create
+    padding: 16px 8px
+    border: 1px solid rgba(#dfdfdf, 0.8)
+    width: 500px
+    border-radius: v.$border-radius
+
+    textarea
+        background: #ffffff
+        border-radius: 0
+        border: none
+        border-bottom: 1px solid #ededed
+        font-size: 14px
+        padding: 8px 4px
+        resize: none
+        transition: border-color 150ms ease
+        width: 100%
+        overflow: hidden
+
+        &:hover
+            border-color: v.$complimentary-color
+
+        &:focus
+            outline: none
+            border-color: v.$complimentary-color
+
+        &::placeholder
+            color: v.$complimentary-color
+
+    .actions
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        margin-top: 8px
+
+        button
+            width: 90px !important
+            padding: 12px 4px !important

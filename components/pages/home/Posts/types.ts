@@ -11,3 +11,9 @@ export interface PostProps {
 export interface FeedsProps {
 	feeds: PostProps[] | []
 }
+
+export enum Metrics {
+	LIKES = 'likes',
+	COMMENTS = 'comments',
+	SHARE = 'share',
+}

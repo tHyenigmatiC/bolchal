@@ -85,7 +85,8 @@ export const useChatMessages = () => {
 			resource: process.env.NEXT_PUBLIC_CHAT_COLLECTION_ID as string,
 			variables: {
 				message,
-				user: user?.name ?? 'Kapil',
+				sender: user?.name ?? 'Kapil',
+				receiver: user?.name ?? 'Kapil',
 			},
 		})
 	}

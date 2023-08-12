@@ -36,3 +36,11 @@ export const SecondaryButton = ({ children, ...props }: ButtonProps) => {
 		</button>
 	)
 }
+
+export const ComplimentaryButton = ({ children, ...props }: ButtonProps) => {
+	return (
+		<button className={styles.buttonComplementary} {...props}>
+			{children}
+		</button>
+	)
+}

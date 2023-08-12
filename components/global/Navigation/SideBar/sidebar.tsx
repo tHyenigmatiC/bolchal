@@ -12,9 +12,8 @@ export const Sidebar = ({
 }: {
 	user?: Models.User<Models.Preferences>
 }) => {
-	console.log(user)
 	return (
-		<div>
+		<header>
 			<Sidebar.Header>
 				<Image
 					src={'https://avatars.githubusercontent.com/u/24877606'}
@@ -47,7 +46,7 @@ export const Sidebar = ({
 					</Link>
 				))}
 			</Sidebar.Body>
-		</div>
+		</header>
 	)
 }
 
