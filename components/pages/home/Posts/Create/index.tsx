@@ -7,14 +7,13 @@ import useAutosizeTextArea from '@hooks/useAutoSizeTextArea'
 import { ComplimentaryButton } from '@components/global'
 import { useGetIdentity } from '@lib/core/hooks'
 import { useCreateOne } from '@lib/core/hooks/data/useCreateOne'
+import { Permission, Role } from 'appwrite'
 
 export const CreatePost = () => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null)
 	const [text, setText] = useState<string>('')
 
 	const { user } = useGetIdentity()
-
-	user?.$id
 
 	const { create } = useCreateOne()
 
@@ -37,6 +36,13 @@ export const CreatePost = () => {
 		create({
 			resource: 'posts',
 			variables: value,
+			meta: {
+				readPermissions: [Permission.read(Role.any())],
+				writePermission: [
+					Permission.update(Role.user(user?.$id as string)),
+					Permission.delete(Role.user(user?.$id as string)),
+				],
+			},
 		}).then(() => setText(''))
 	}
 	return (

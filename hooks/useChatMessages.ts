@@ -1,7 +1,7 @@
 import { Pagination } from '@lib/core'
 import { useGetIdentity, useGetList, useRealtime } from '@lib/core/hooks'
 import { useCreateOne } from '@lib/core/hooks/data/useCreateOne'
-import { Models } from 'appwrite'
+import { Models, Permission, Role } from 'appwrite'
 import { useEffect, useRef, useState } from 'react'
 
 export type ChatMessage = Models.Document & {
@@ -87,6 +87,15 @@ export const useChatMessages = () => {
 				message,
 				sender: user?.name ?? 'Kapil',
 				receiver: user?.name ?? 'Kapil',
+			},
+			meta: {
+				readPermissions: [
+					Permission.read(Role.user(user?.$id as string)),
+				],
+				writePermissions: [
+					Permission.update(Role.user(user?.$id as string)),
+					Permission.delete(Role.user(user?.$id as string)),
+				],
 			},
 		})
 	}

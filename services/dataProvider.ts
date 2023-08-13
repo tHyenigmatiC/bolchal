@@ -71,10 +71,8 @@ export const dataProvider = (
 		},
 		createOne: async ({ resource, variables, meta }) => {
 			const permissions = [
-				Permission.read(Role.any()),
-				Permission.write(Role.any()),
-				...(meta?.readPermissions ?? ''),
-				...(meta?.writePermissions ?? ''),
+				...(meta?.readPermissions ?? Permission.read(Role.any())),
+				...(meta?.writePermissions ?? Permission.write(Role.any())),
 			]
 
 			console.log({ resource, variables, meta })
