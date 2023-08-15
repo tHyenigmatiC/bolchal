@@ -23,8 +23,6 @@ export const useCreatePost = () => {
 			description: text,
 		}
 
-		console.log(value)
-
 		create({
 			resource: 'posts',
 			variables: value,
