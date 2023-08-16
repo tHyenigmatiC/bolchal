@@ -1,47 +1,42 @@
 import { useAutosizeTextArea } from '@hooks'
-import {
+import React, {
 	useRef,
-	ChangeEventHandler,
 	DetailedHTMLProps,
 	TextareaHTMLAttributes,
-	useState,
 	useMemo,
 } from 'react'
 
 type Props = DetailedHTMLProps<
 	TextareaHTMLAttributes<HTMLTextAreaElement>,
 	HTMLTextAreaElement
->
+> & {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	value: string
+}
 
 export const useAutoExpandingTextArea = (props?: Props) => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null)
-	const [text, setText] = useState<string>('')
 
-	useAutosizeTextArea(textAreaRef.current, text)
+	const { value, ...otherProps } = props as Props
 
-	const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-		setText(event.target.value)
-	}
+	useAutosizeTextArea(textAreaRef.current, value)
 
-	const AutoExpandingTextArea = useMemo(() => {
+	const AutoExpandableTextArea = useMemo(() => {
 		// eslint-disable-next-line react/display-name
 		return () => (
 			<textarea
 				ref={textAreaRef}
-				value={text}
-				onChange={handleChange}
+				value={value}
 				rows={1}
-				{...props}
+				{...otherProps}
 			/>
 		)
-	}, [props, text])
+	}, [value, otherProps])
 
 	return useMemo(
 		() => ({
-			AutoExpandingTextArea,
-			text,
-			setText,
+			AutoExpandableTextArea,
 		}),
-		[AutoExpandingTextArea, text, setText]
+		[AutoExpandableTextArea]
 	)
 }
