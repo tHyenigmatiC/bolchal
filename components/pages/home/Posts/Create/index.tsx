@@ -6,7 +6,6 @@ import React from 'react'
 
 export const CreatePost = () => {
 	const { CreatePostForm } = useCreatePostForm()
-	console.count('CreatePost')
 	return (
 		<div className={styles.create}>
 			<CreatePostForm />

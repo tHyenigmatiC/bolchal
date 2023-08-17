@@ -21,9 +21,9 @@ export const useAutoExpandingTextArea = (props?: Props) => {
 
 	useAutosizeTextArea(textAreaRef.current, value)
 
-	const AutoExpandableTextArea = useMemo(() => {
+	const AutoExpandableTextArea = useMemo<React.JSX.Element>(() => {
 		// eslint-disable-next-line react/display-name
-		return () => (
+		return (
 			<textarea
 				ref={textAreaRef}
 				value={value}

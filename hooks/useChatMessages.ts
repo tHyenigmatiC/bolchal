@@ -2,7 +2,7 @@ import { Pagination } from '@lib/core'
 import { useGetIdentity, useGetList, useRealtime } from '@lib/core/hooks'
 import { useCreateOne } from '@lib/core/hooks/data/useCreateOne'
 import { Models, Permission, Role } from 'appwrite'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export type ChatMessage = Models.Document & {
 	name: string
@@ -16,7 +16,7 @@ export const useChatMessages = () => {
 		pageSize: 15,
 	})
 
-	const { loadData } = useGetList()
+	const { loadData: handleLoadData } = useGetList()
 	const [messages, setMessages] = useState<ChatMessage[]>([])
 	const { user } = useGetIdentity()
 	const { create } = useCreateOne()
@@ -42,8 +42,8 @@ export const useChatMessages = () => {
 		})
 	}
 
-	useEffect(() => {
-		loadData({
+	const loadData = useCallback(() => {
+		handleLoadData({
 			resource: process.env.NEXT_PUBLIC_CHAT_COLLECTION_ID as string,
 			pagination,
 			sort: [
@@ -54,8 +54,9 @@ export const useChatMessages = () => {
 			],
 		}).then(
 			(response) => {
-				const chatMessages = response?.data as unknown as ChatMessage[]
-				cursor.current = chatMessages[chatMessages.length - 1].id
+				const chatMessages =
+					(response?.data as unknown as ChatMessage[]) || []
+				cursor.current = chatMessages?.[chatMessages.length - 1]?.id
 				setMessages((oldMessages) => [
 					...chatMessages.sort((a, b) => {
 						return (
@@ -72,6 +73,10 @@ export const useChatMessages = () => {
 			}
 		)
 	}, [pagination])
+
+	useEffect(() => {
+		loadData()
+	}, [loadData])
 
 	useEffect(() => {
 		listenToRealtimeUpdates()

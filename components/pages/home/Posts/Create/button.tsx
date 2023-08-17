@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './create.module.sass'
-import { ComplimentaryButton } from '@components'
+import { ComplimentaryButton } from '@components/global'
 
 // eslint-disable-next-line react/display-name
 export const SubitButton = React.memo(() => {

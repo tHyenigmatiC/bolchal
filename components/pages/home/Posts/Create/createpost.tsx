@@ -8,7 +8,7 @@ export interface FormFields {
 
 const defaultValue = { text: '' }
 
-export const CreatePostForm = ({
+export const PostForm = ({
 	onFormSubmit,
 }: {
 	onFormSubmit: (fields: FormFields) => Promise<void>
@@ -28,7 +28,7 @@ export const CreatePostForm = ({
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<AutoExpandableTextArea />
+			{AutoExpandableTextArea}
 			<SubitButton />
 		</form>
 	)

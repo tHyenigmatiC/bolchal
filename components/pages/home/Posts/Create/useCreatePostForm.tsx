@@ -2,16 +2,14 @@ import { useCallback, useMemo } from 'react'
 import { Permission, Role } from 'appwrite'
 
 import { useGetIdentity, useCreateOne } from '@lib/core/hooks'
-import { CreatePostForm } from './form'
+import { PostForm } from './createpost'
 
 export const useCreatePostForm = () => {
 	const { user } = useGetIdentity()
 
 	const { create } = useCreateOne()
 
-	console.count('useCreatePostForm')
-
-	const createPost = useCallback(
+	const handleCreatePost = useCallback(
 		async ({ text }: { text: string }) => {
 			const value = {
 				user: user?.$id,
@@ -23,7 +21,7 @@ export const useCreatePostForm = () => {
 				variables: value,
 				meta: {
 					readPermissions: [Permission.read(Role.any())],
-					writePermission: [
+					writePermissions: [
 						Permission.update(Role.user(user?.$id as string)),
 						Permission.delete(Role.user(user?.$id as string)),
 					],
@@ -33,15 +31,15 @@ export const useCreatePostForm = () => {
 		[create, user]
 	)
 
-	const CreatePost = useMemo(() => {
+	const CreatePostForm = useMemo(() => {
 		// eslint-disable-next-line react/display-name
-		return () => <CreatePostForm onFormSubmit={createPost} />
-	}, [createPost])
+		return () => <PostForm onFormSubmit={handleCreatePost} />
+	}, [handleCreatePost])
 
 	return useMemo(
 		() => ({
-			CreatePostForm: CreatePost,
+			CreatePostForm,
 		}),
-		[CreatePost]
+		[CreatePostForm]
 	)
 }
