@@ -8,6 +8,7 @@ export const useCreatePostForm = () => {
 	const { user } = useGetIdentity()
 
 	const { create } = useCreateOne()
+	//
 
 	const handleCreatePost = useCallback(
 		async ({ text }: { text: string }) => {
