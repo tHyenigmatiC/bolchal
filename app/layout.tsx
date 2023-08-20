@@ -9,7 +9,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
 	title: 'Bolchal',
-	description: 'Nepali Social Media Platform',
+	description: 'Nepali Social Media Platform - Inc',
 }
 
 export default function RootLayout({
