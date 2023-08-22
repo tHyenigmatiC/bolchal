@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './sidebar.module.sass'
-import { useGetIdentity } from '@lib/core/hooks'
+import { useGetIdentity } from '@packages/core/hooks'
 import { Sidebar as SidebarContent } from './sidebar'
 
 export const Sidebar = () => {

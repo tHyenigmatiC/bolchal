@@ -2,7 +2,7 @@
 
 import { Account, ID } from 'appwrite'
 
-import { HttpError, IAuthContext } from '@lib/core'
+import { HttpError, IAuthContext } from '@packages/core'
 
 export type LoginProps = {
 	email: string

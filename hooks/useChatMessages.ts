@@ -1,6 +1,6 @@
-import { Pagination } from '@lib/core'
-import { useGetIdentity, useGetList, useRealtime } from '@lib/core/hooks'
-import { useCreateOne } from '@lib/core/hooks/data/useCreateOne'
+import { Pagination } from '@packages/core'
+import { useGetIdentity, useGetList, useRealtime } from '@packages/core/hooks'
+import { useCreateOne } from '@packages/core/hooks/data/useCreateOne'
 import { Models, Permission, Role } from 'appwrite'
 import { useCallback, useEffect, useRef, useState } from 'react'
 

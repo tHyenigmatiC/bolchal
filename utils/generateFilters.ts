@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CrudFilter } from '@lib/core/interfaces'
+import { CrudFilter } from '@packages/core/interfaces'
 import { Query } from 'appwrite'
 
 export const generateFilter = (filter: CrudFilter) => {

@@ -1,4 +1,4 @@
-import { CrudFilters } from '@lib/core/interfaces'
+import { CrudFilters } from '@packages/core/interfaces'
 import { generateFilter } from './generateFilters'
 
 type GetAppwriteFiltersType = {

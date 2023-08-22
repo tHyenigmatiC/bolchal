@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
 import { Permission, Role } from 'appwrite'
 
-import { useGetIdentity, useCreateOne } from '@lib/core/hooks'
+import { useGetIdentity, useCreateOne } from '@packages/core/hooks'
 import { PostForm } from './createpost'
 
 export const useCreatePostForm = () => {

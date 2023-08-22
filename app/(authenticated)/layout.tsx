@@ -1,5 +1,5 @@
 import { Sidebar } from '@components'
-import { Authenticated, Navigate } from '@lib/core/components'
+import { Authenticated, Navigate } from '@packages/core/components'
 
 import styles from './layout.module.sass'
 

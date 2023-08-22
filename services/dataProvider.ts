@@ -3,7 +3,7 @@
 
 import { Databases, ID, Permission, Role } from 'appwrite'
 
-import { IDataContext } from '@lib/core/interfaces'
+import { IDataContext } from '@packages/core/interfaces'
 import { getAppwriteFilters } from '@utils/getAppwriteFilters'
 import { getAppwritePagination } from '@utils/getAppwritePagination'
 import { getAppwriteSorting } from '@utils/getAppwriteSorting'

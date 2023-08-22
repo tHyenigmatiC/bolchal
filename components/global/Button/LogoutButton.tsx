@@ -2,7 +2,7 @@
 
 import { MouseEventHandler } from 'react'
 
-import { useLogout } from '@lib/core/hooks/auth/useLogout'
+import { useLogout } from '@packages/core/hooks/auth/useLogout'
 import { Button, ButtonProps } from './Button'
 
 import styles from './button.module.sass'

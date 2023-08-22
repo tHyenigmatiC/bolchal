@@ -2,7 +2,7 @@
 
 import { Client as Appwrite } from 'appwrite'
 
-import { ILiveContext } from '@lib/core/interfaces/live'
+import { ILiveContext } from '@packages/core/interfaces/live'
 import { getAppEvent } from './getAppEvent'
 
 export const liveProvider = (

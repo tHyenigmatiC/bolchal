@@ -24,7 +24,7 @@
 			"@components": ["./components"],
 			"@components/*": ["./components/*"],
 			"@styles/*": ["./styles/*"],
-			"@lib/*": ["./lib/*"],
+			"@packages/*": ["./packages/*"],
 			"@schema/*": ["./validationSchemas/*"],
 			"@utils/*": ["./utils/*"],
 			"@services/*": ["./services/*"],

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { Realtime } from '@lib/core'
+import { Realtime } from '@packages/core'
 import { appwriteClient } from '@services/appwriteClient'
 import { liveProvider } from '@services/liveProvider'
 

@@ -1,4 +1,4 @@
-import { CursorPagination, Pagination, StaticPagination } from '@lib/core'
+import { CursorPagination, Pagination, StaticPagination } from '@packages/core'
 import { Query } from 'appwrite'
 
 export const getAppwritePagination = (pagination?: Pagination) => {

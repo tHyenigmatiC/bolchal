@@ -1,4 +1,4 @@
-import { LiveEvent } from '@lib/core'
+import { LiveEvent } from '@packages/core'
 
 export const getAppEvent = (event: string): LiveEvent['type'] | undefined => {
 	if (event.includes('.create')) {

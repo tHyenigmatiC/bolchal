@@ -1,4 +1,4 @@
-import { CrudSorting } from '@lib/core/interfaces'
+import { CrudSorting } from '@packages/core/interfaces'
 import { Query } from 'appwrite'
 
 type GetAppwriteSortingType = {
