@@ -6,6 +6,7 @@ import styles from './sidebar.module.sass'
 
 import { SidebarConfig } from './config'
 import Link from 'next/link'
+import { LogoutButton } from '@components/global/Button'
 
 export const Sidebar = ({
 	user,
@@ -13,7 +14,7 @@ export const Sidebar = ({
 	user?: Models.User<Models.Preferences>
 }) => {
 	return (
-		<header>
+		<div className={styles.content}>
 			<Sidebar.Header>
 				<Image
 					src={'https://avatars.githubusercontent.com/u/24877606'}
@@ -25,7 +26,7 @@ export const Sidebar = ({
 						borderRadius: '50%',
 					}}
 				/>
-				<p>{user?.name}</p>
+				<p>{user?.email}</p>
 			</Sidebar.Header>
 			<Sidebar.Body>
 				{SidebarConfig.links.map((link) => (
@@ -46,7 +47,18 @@ export const Sidebar = ({
 					</Link>
 				))}
 			</Sidebar.Body>
-		</header>
+			<Sidebar.Footer>
+				<LogoutButton className={styles.link}>
+					<Image
+						src="/logout.svg"
+						alt="Picture of link"
+						height={20}
+						width={20}
+					/>
+					<p>Logout</p>
+				</LogoutButton>
+			</Sidebar.Footer>
+		</div>
 	)
 }
 
@@ -56,4 +68,8 @@ Sidebar.Header = ({ children }: { children: React.ReactNode }) => {
 
 Sidebar.Body = ({ children }: { children: React.ReactNode }) => {
 	return <div className={styles.body}>{children}</div>
+}
+
+Sidebar.Footer = ({ children }: { children: React.ReactNode }) => {
+	return <div className={styles.footer}>{children}</div>
 }
