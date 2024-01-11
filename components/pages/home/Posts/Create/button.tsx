@@ -3,7 +3,7 @@ import styles from './create.module.sass'
 import { ComplimentaryButton } from '@components/global'
 
 // eslint-disable-next-line react/display-name
-export const SubitButton = React.memo(() => {
+export const SubmitButton = React.memo(() => {
 	return (
 		<div className={styles.actions}>
 			<ComplimentaryButton type="submit">Post</ComplimentaryButton>

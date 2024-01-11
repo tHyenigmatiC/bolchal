@@ -15,14 +15,39 @@ export const SidebarConfig: SidebarProps = {
 			icon: '/home.svg',
 		},
 		{
+			href: '/explore',
+			text: 'Explore',
+			icon: '/explore.svg',
+		},
+		{
+			href: '/notifications',
+			text: 'Notifications',
+			icon: '/bell.svg',
+		},
+		{
 			href: '/messages',
 			text: 'Messages',
 			icon: '/message.svg',
 		},
 		{
-			href: '/#',
-			text: 'Settings',
-			icon: '/settings.svg',
+			href: '/grok',
+			text: 'Grok',
+			icon: '/grok.svg',
+		},
+		{
+			href: '/lists',
+			text: 'Lists',
+			icon: '/lists.svg',
+		},
+		{
+			href: '/profile',
+			text: 'Profile',
+			icon: '/profile.svg',
+		},
+		{
+			href: '/more',
+			text: 'More',
+			icon: '/dots.svg',
 		},
 	],
 }

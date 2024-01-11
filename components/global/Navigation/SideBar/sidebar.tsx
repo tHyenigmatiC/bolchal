@@ -6,6 +6,7 @@ import styles from './sidebar.module.sass'
 
 import { SidebarConfig } from './config'
 import Link from 'next/link'
+import { ComplimentaryButton } from '@components/global/Button'
 
 export const Sidebar = ({
 	user,
@@ -15,17 +16,12 @@ export const Sidebar = ({
 	return (
 		<header>
 			<Sidebar.Header>
-				<Image
-					src={'https://avatars.githubusercontent.com/u/24877606'}
-					alt="Picture of user"
-					height={48}
-					width={48}
-					style={{
-						objectFit: 'contain',
-						borderRadius: '50%',
-					}}
-				/>
-				<p>{user?.name}</p>
+				<Link
+					href='/'
+					className={styles.brand}
+				>
+					Bolchal
+				</Link>
 			</Sidebar.Header>
 			<Sidebar.Body>
 				{SidebarConfig.links.map((link) => (
@@ -38,13 +34,14 @@ export const Sidebar = ({
 							<Image
 								src={link.icon}
 								alt="Picture of link"
-								height={20}
-								width={20}
+								height={24}
+								width={24}
 							/>
 						) : null}
 						<p>{link.text}</p>
 					</Link>
 				))}
+				<ComplimentaryButton>Post</ComplimentaryButton>
 			</Sidebar.Body>
 		</header>
 	)

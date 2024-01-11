@@ -1,5 +1,5 @@
 import React, { FormEventHandler, useState } from 'react'
-import { SubitButton } from './button'
+import { SubmitButton } from './button'
 import { useAutoExpandingTextArea } from './useAutoExpandingTextArea'
 
 export interface FormFields {
@@ -29,7 +29,7 @@ export const PostForm = ({
 	return (
 		<form onSubmit={handleSubmit}>
 			{AutoExpandableTextArea}
-			<SubitButton />
+			<SubmitButton />
 		</form>
 	)
 }

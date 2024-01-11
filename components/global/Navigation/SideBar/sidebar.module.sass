@@ -3,17 +3,20 @@
 .sidebar
     color: v.$complimentary-color
     grid-column: 1
-    padding: 48px
+    padding: 12px 24px 12px 56px
     align-self: flex-start
     justify-self: center
     height: 100svh
     width: 100%
     display: flex
     align-items: flex-start
-    justify-content: center
+    justify-content: flex-start
     gap: 16px
     left: 0
     top: 0
+
+    header
+        width: 100%
 
     .header,
     .link
@@ -24,13 +27,22 @@
 
     .header
         margin: 8px 0
-        color: v.$text-color
+        .brand
+            font-size: 32px
+            font-weight: 900
+            color: v.$text-color
 
     .body
-        margin-top: 32px
+        margin-top: 16px
+        width: 100%
+        button
+            width: 100%
+            font-size: 20px
+            border-radius: 24px
+            margin-left: -16px
 
     .link
-        padding: 16px 8px
-        font-size: 16px
-        font-weight: 500
+        padding: 8px 0px 16px
+        font-size: 20px
+        font-weight: 400
         color: v.$complimentary-color
