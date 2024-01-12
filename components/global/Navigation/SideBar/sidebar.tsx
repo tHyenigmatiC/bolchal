@@ -43,6 +43,28 @@ export const Sidebar = ({
 				))}
 				<ComplimentaryButton>Post</ComplimentaryButton>
 			</Sidebar.Body>
+			<Sidebar.Footer>
+				<Image
+						src={'https://avatars.githubusercontent.com/u/24877606'}
+						alt="Picture of user"
+						height={48}
+						width={48}
+						style={{
+							objectFit: 'contain',
+							borderRadius: '50%',
+						}}
+					/>
+					<div className={styles.column}>
+						<p>{user?.name}</p>
+						<p>@{user?.name}</p>
+					</div>
+					<Image
+						src='/dots.svg'
+						alt="Picture of link"
+						height={20}
+						width={20}
+					/>
+			</Sidebar.Footer>
 		</header>
 	)
 }
@@ -53,4 +75,9 @@ Sidebar.Header = ({ children }: { children: React.ReactNode }) => {
 
 Sidebar.Body = ({ children }: { children: React.ReactNode }) => {
 	return <div className={styles.body}>{children}</div>
+}
+
+
+Sidebar.Footer = ({ children }: { children: React.ReactNode }) => {
+	return <div className={styles.footer}>{children}</div>
 }
