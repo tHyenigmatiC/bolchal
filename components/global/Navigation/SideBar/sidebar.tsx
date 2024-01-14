@@ -60,7 +60,7 @@ export const Sidebar = ({
 					</div>
 					<Image
 						src='/dots.svg'
-						alt="Picture of link"
+						alt="More Account Options"
 						height={20}
 						width={20}
 					/>

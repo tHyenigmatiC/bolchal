@@ -47,7 +47,7 @@ export const SidebarConfig: SidebarProps = {
 		{
 			href: '/more',
 			text: 'More',
-			icon: '/dots.svg',
+			icon: '/more.svg',
 		},
 	],
 }
