@@ -7,6 +7,7 @@ import styles from './sidebar.module.sass'
 import { SidebarConfig } from './config'
 import Link from 'next/link'
 import { ComplimentaryButton } from '@components/global/Button'
+import { SidebarLink } from './link'
 
 export const Sidebar = ({
 	user,
@@ -14,57 +15,49 @@ export const Sidebar = ({
 	user?: Models.User<Models.Preferences>
 }) => {
 	return (
-		<header>
-			<Sidebar.Header>
-				<Link
-					href='/'
-					className={styles.brand}
-				>
-					Bolchal
-				</Link>
-			</Sidebar.Header>
-			<Sidebar.Body>
-				{SidebarConfig.links.map((link) => (
-					<Link
-						href={link.href}
-						className={styles.link}
-						key={link.href}
-					>
-						{link.icon ? (
-							<Image
-								src={link.icon}
-								alt="Picture of link"
-								height={24}
-								width={24}
-							/>
-						) : null}
-						<p>{link.text}</p>
-					</Link>
-				))}
-				<ComplimentaryButton>Post</ComplimentaryButton>
-			</Sidebar.Body>
-			<Sidebar.Footer>
-				<Image
-						src={'https://avatars.githubusercontent.com/u/24877606'}
-						alt="Picture of user"
-						height={48}
-						width={48}
-						style={{
-							objectFit: 'contain',
-							borderRadius: '50%',
-						}}
-					/>
-					<div className={styles.column}>
-						<p>{user?.name}</p>
-						<p>@{user?.name}</p>
+		<header role='banner' className={styles.nostyles}>
+			<div className={` ${styles.nostyles} ${styles.container}`}>
+				<div className={`${styles.nostyles} ${styles.sidebarcontent}`}>
+					<div className={`${styles.nostyles} ${styles.navigation}`}>
+						<Sidebar.Header>
+							<Link
+								href='/'
+								className={styles.brand}
+							>
+								Bolchal
+							</Link>
+						</Sidebar.Header>
+						<Sidebar.Body>
+							{SidebarConfig.links.map((link) => (
+								<SidebarLink link={link} key={link.href}/>
+							))}
+							<ComplimentaryButton>Post</ComplimentaryButton>
+						</Sidebar.Body>
 					</div>
-					<Image
-						src='/dots.svg'
-						alt="More Account Options"
-						height={20}
-						width={20}
-					/>
-			</Sidebar.Footer>
+					<Sidebar.Footer>
+						<Image
+								src={'https://avatars.githubusercontent.com/u/24877606'}
+								alt="Picture of user"
+								height={48}
+								width={48}
+								style={{
+									objectFit: 'contain',
+									borderRadius: '50%',
+								}}
+							/>
+							<div className={styles.column}>
+								<p>{user?.name}</p>
+								<p>@{user?.name}</p>
+							</div>
+							<Image
+								src='/dots.svg'
+								alt="More Account Options"
+								height={20}
+								width={20}
+							/>
+					</Sidebar.Footer>
+				</div>				
+			</div>
 		</header>
 	)
 }

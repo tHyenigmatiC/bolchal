@@ -1,10 +1,10 @@
-export interface SidebarLink {
+export interface LinkConfig {
 	href: string
 	text: string
 	icon?: string
 }
 export interface SidebarProps {
-	links: SidebarLink[]
+	links: LinkConfig[]
 }
 
 export const SidebarConfig: SidebarProps = {
