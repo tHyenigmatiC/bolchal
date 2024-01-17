@@ -16,7 +16,6 @@ export default function HomePageLayout({
 			<main className={styles.layout}>
 				<Sidebar />
 				<div className={styles.content}>{children}</div>
-				<SearchSidebar/>
 			</main>
 		</Authenticated>
 	)
