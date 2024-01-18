@@ -29,7 +29,7 @@ export const PostForm = ({
 	return (
 		<form onSubmit={handleSubmit}>
 			{AutoExpandableTextArea}
-			<SubmitButton />
+			<SubmitButton disabled={values.text == ''}/>
 		</form>
 	)
 }

@@ -17,8 +17,17 @@ export const Post = ({ children }: { children: React.ReactNode }) => {
 	return <article className={styles.post}>{children}</article>
 }
 
-Post.Header = ({ children }: { children: React.ReactNode }) => {
-	return <div className={styles.header}>{children}</div>
+Post.Row = ({ children }: { children: React.ReactNode }) => {
+	return <div className={styles.row}>{children}</div>
+}
+
+Post.Container = ({ children }: { children: React.ReactNode }) => {
+	return <div className={styles.container}>{children}</div>
+}
+
+
+Post.Info = ({ children }: { children: React.ReactNode }) => {
+	return <div className={styles.info}>{children}</div>
 }
 
 Post.Body = ({ children }: { children: React.ReactNode }) => {

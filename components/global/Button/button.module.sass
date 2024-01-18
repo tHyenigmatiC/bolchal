@@ -7,6 +7,9 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px
     cursor: pointer
 
+    &:disabled
+        cursor: auto
+
     .small
         width: 60px
 
@@ -22,6 +25,8 @@
     font-size: 16px
     &:hover
         background-color: rgba(v.$primary-color, 0.9)
+    &:disabled
+        background-color: rgba(v.$primary-color, 0.5)
 
 .buttonSecondary
     @extend .button
@@ -30,6 +35,8 @@
     border: none
     &:hover
         background-color: rgba(v.$secondary-color, 0.9)
+    &:disabled
+        background-color: rgba(v.$secondary-color, 0.5)
 
 .buttonComplementary
     @extend .button
@@ -38,6 +45,8 @@
     border: none
     &:hover
         background-color: rgba(v.$complimentary-color, 0.9)
+    &:disabled
+        background-color: rgba(v.$complimentary-color, 0.5)
 
 .button-logout
     padding: 16px
@@ -48,3 +57,5 @@
     cursor: pointer
     &:hover
         background-color: rgba(red, 0.7)
+    &:disabled
+        background-color: rgba(red, 0.4)
