@@ -1,11 +1,12 @@
 import { SearchSidebar } from '@components/global/SearchSidebar'
 import styles from './page.module.sass'
-import { CreatePost, Feeds } from '@components/pages'
+import { CreatePost, Feeds, FeedsCategoryNavigationBar } from '@components/pages'
 
 export default function Home() {
 	return (
 		<main className={styles.main}>
 			<div className={styles.left}>
+				<FeedsCategoryNavigationBar />
 				<CreatePost />
 				<Feeds feeds={[]} />
 			</div>
