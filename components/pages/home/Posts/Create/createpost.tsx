@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useState } from 'react'
+import React, { FormEventHandler, InputHTMLAttributes, useState } from 'react'
 import { SubmitButton } from './button'
 import { useAutoExpandingTextArea } from './useAutoExpandingTextArea'
 
@@ -26,9 +26,22 @@ export const PostForm = ({
 		onFormSubmit(values).then(() => setValues(defaultValue))
 	}
 
+
+	const handleImageUpload : React.ChangeEventHandler<HTMLInputElement> = async (event) => {
+		const file = event?.target?.files?.[0];
+		if( file ){
+			const formData = new FormData();
+			formData.append('image', file);
+			console.log(formData)
+		}
+	  };
+
 	return (
 		<form onSubmit={handleSubmit}>
 			{AutoExpandableTextArea}
+			<div>
+				<input type="file" accept="image/*" onChange={handleImageUpload} />
+			</div>
 			<SubmitButton disabled={values.text == ''}/>
 		</form>
 	)
