@@ -20,7 +20,7 @@
         background: #ffffff
         border-radius: 0
         border: none
-        border-bottom: 1px solid #ededed
+        border-bottom: 1px solid rgba(#1f1f1f, 0.3)
         font-size: 18px
         padding: 8px 4px
         resize: none
@@ -38,12 +38,48 @@
         &::placeholder
             color: rgba(#1f1f1f, 0.5)
 
-    .actions
+    .imagePreview
+        width: 500px
+        height: 350px
+        position: relative
+        button
+            border: none
+            border-radius: 50%
+            background-color: #681717
+            display: flex
+            align-items: center
+            justify-content: center
+            position: absolute
+            right: 0
+            z-index: 10
+            cursor: pointer
+
+    .row
         display: flex
         align-items: center
-        justify-content: flex-end
-        margin-top: 8px
+        justify-content: space-between
+        padding: 12px 4px 0px
+        .inputOptions
+            display: flex
+            align-items: center
+            justify-content: flex-start
+            gap: 8px
 
+            .imagepicker
+                cursor: pointer
+                input[type="file"]
+                    display: none
+
+            .emojiButton
+                border: none
+                background-color: transparent
+                cursor: pointer
+
+            .emojiPicker
+                position: absolute
+                z-index: 50
+
+    .actions
         button
             width: 90px !important
             padding: 12px 4px !important
