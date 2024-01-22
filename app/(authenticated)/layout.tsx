@@ -2,7 +2,7 @@ import { Sidebar } from '@components'
 import { Authenticated, Navigate } from '@packages/core/components'
 
 import styles from './layout.module.sass'
-import { SearchSidebar } from '@components/global/SearchSidebar'
+import { CollapsibleMessage } from '@components/global/Collapsible'
 
 export default function HomePageLayout({
 	children,
@@ -16,6 +16,7 @@ export default function HomePageLayout({
 			<main className={styles.layout}>
 				<Sidebar />
 				<div className={styles.content}>{children}</div>
+				<CollapsibleMessage/>
 			</main>
 		</Authenticated>
 	)
