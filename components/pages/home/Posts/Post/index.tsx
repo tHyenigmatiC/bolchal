@@ -7,27 +7,34 @@ import { Metrics, PostProps } from '../types'
 
 
 export const Post = (props: PostProps) => {
-	const { description, media, likes, comments, share, createdAt, user } =
+	console.log(props)
+
+	const { description, media, likes, comments, share, $createdAt, user } =
 		props
 	return (
 		<PostUI>
 			<PostUI.Row>
-				<Image
-					src={media}
-					width={48}
-					height={48}
-					alt="Picture of the author"
-					style={{
-						objectFit: 'contain',
-						borderRadius: '50%',
-					}}
-				/>
+				{
+					media ?
+						<Image
+							src={media}
+							width={48}
+							height={48}
+							alt="Picture of the author"
+							style={{
+								objectFit: 'contain',
+								borderRadius: '50%',
+							}}
+						/>
+					:
+					null
+				}
 				<PostUI.Container>
 					<PostUI.Info>
 						<p>{user}</p>
 						<span>@KapilBastola</span>
 						<p>·</p>
-						<span>{createdAt}</span>
+						<span>{$createdAt.split('T')[0]}</span>
 					</PostUI.Info>
 					<PostUI.Body>
 						<PostUI.Content>{description}</PostUI.Content>

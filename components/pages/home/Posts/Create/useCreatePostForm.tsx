@@ -12,25 +12,33 @@ export const useCreatePostForm = () => {
 
 	const handleCreatePost = useCallback(
 		async ({ text, media }: { text: string, media: string }) => {
-			const value = {
+			
+			let value = {
 				user: user?.$id,
 				description: text,
-				media: media
+			} as any
+
+			if(media){
+				value = {
+					user: user?.$id,
+					description: text,
+					media: media
+				}
 			}
 
-			// await create({
-			// 	resource: 'posts',
-			// 	variables: value,
-			// 	meta: {
-			// 		readPermissions: [Permission.read(Role.any())],
-			// 		writePermissions: [
-			// 			Permission.update(Role.user(user?.$id as string)),
-			// 			Permission.delete(Role.user(user?.$id as string)),
-			// 		],
-			// 	},
-			// })
+			const resp = await create({
+				resource: 'posts',
+				variables: value,
+				meta: {
+					readPermissions: [Permission.read(Role.any())],
+					writePermissions: [
+						Permission.update(Role.user(user?.$id as string)),
+						Permission.delete(Role.user(user?.$id as string)),
+					],
+				},
+			})
 
-			console.log(value)
+			console.log(resp)
 			
 		},
 		[create, user]

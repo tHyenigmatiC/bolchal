@@ -4,12 +4,13 @@ export interface PostProps {
 	likes: number
 	comments: number
 	share: number
-	createdAt: string
+	$createdAt: string
 	user: string
+	id: string
 }
 
-export interface FeedsProps {
-	feeds: PostProps[] | []
+export type FeedsProps = {
+	feeds: PostProps[]
 }
 
 export enum Metrics {

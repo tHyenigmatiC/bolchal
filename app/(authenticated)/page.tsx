@@ -8,7 +8,7 @@ export default function Home() {
 			<div className={styles.left}>
 				<FeedsCategoryNavigationBar />
 				<CreatePost />
-				<Feeds feeds={[]} />
+				<Feeds/>
 			</div>
 			<div className={styles.right}>
 				<SearchSidebar />
