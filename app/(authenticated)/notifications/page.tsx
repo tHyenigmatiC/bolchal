@@ -9,8 +9,6 @@ import { useGetList } from '@packages/core/hooks'
 import { useEffect, useState } from 'react'
 
 const Notifications = () => {
-
-
 	const [feeds, setFeeds] = useState<PostProps[]>()
 
 	const { loadData } = useGetList({
